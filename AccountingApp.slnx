@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="AccountingApp/AccountingApp.csproj" />
+  <Project Path="Business/Business.csproj" />
+  <Project Path="DataLayer/DataLayer.csproj" />
+  <Project Path="Test2/Test2.csproj" />
+  <Project Path="Utility/Utility.csproj" />
+  <Project Path="ViewModels/ViewModels.csproj" />
+</Solution>
