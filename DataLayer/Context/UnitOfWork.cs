@@ -27,14 +27,14 @@ namespace DataLayer.Context
             }
         }
 
-        private GenericRepository<Accounting> _accountingRepositoey;
+        private AccountingRespository _accountingRepositoey;
 
-        public GenericRepository<Accounting> AccountingRepository
+        public AccountingRespository AccountingRepository
         {
             get
             {
                 if (_accountingRepositoey == null)
-                    _accountingRepositoey = new GenericRepository<Accounting>(db);
+                    _accountingRepositoey = new AccountingRespository(db);
                  
                 return _accountingRepositoey;
             }

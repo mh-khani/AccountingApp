@@ -12,7 +12,7 @@ namespace DataLayer.Serives
     public class GenericRepository<TEntity> where TEntity : class
     {
         private AccountingDbContext _dbContext;
-        private DbSet<TEntity> _dbSet;
+        protected DbSet<TEntity> _dbSet;
 
         public GenericRepository(AccountingDbContext DbContext)
         {

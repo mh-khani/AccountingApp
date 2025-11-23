@@ -24,6 +24,6 @@ public partial class Accounting
 
     // Not Map
 
- //   [NotMapped]
-  //  public string FullName { get => Customer.FullName; }
+    [NotMapped]
+    public string FullName { get => Customer.FullName; }
 }

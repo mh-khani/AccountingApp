@@ -36,7 +36,7 @@ namespace AccountingApp
         {
             using (UnitOfWork db = new UnitOfWork())
             {
-                var res = db.AccountingRepository.Get(a => a.TypeId == TypeId);
+                var res = db.AccountingRepository.GetWithRelations(a => a.TypeId == TypeId);
 
                 dataGridView1.RowHeadersVisible = false;
                 dataGridView1.AutoGenerateColumns = false;
