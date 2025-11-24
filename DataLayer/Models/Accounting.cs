@@ -26,4 +26,5 @@ public partial class Accounting
 
     [NotMapped]
     public string FullName { get => Customer.FullName; }
+    public string DateShamsi { get => Utility.DateConvertor.ToShamsi(DateTime); }
 }

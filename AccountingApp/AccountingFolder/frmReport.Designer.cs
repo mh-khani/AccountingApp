@@ -46,6 +46,7 @@
             ID = new DataGridViewTextBoxColumn();
             Contact = new DataGridViewTextBoxColumn();
             Amount = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
             toolStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -70,6 +71,7 @@
             btnEdit.Size = new Size(36, 51);
             btnEdit.Text = "Edit";
             btnEdit.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 
@@ -80,6 +82,7 @@
             btnDelete.Size = new Size(44, 51);
             btnDelete.Text = "Delete";
             btnDelete.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnref
             // 
@@ -90,6 +93,7 @@
             btnref.Size = new Size(50, 51);
             btnref.Text = "Refresh";
             btnref.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnref.Click += btnref_Click;
             // 
             // btnPrint
             // 
@@ -191,7 +195,7 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ID, Contact, Amount, Column1 });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ID, Contact, Amount, Column2, Column1 });
             dataGridView1.Location = new Point(12, 135);
             dataGridView1.Margin = new Padding(3, 4, 3, 4);
             dataGridView1.Name = "dataGridView1";
@@ -221,9 +225,16 @@
             Amount.Name = "Amount";
             Amount.ReadOnly = true;
             // 
+            // Column2
+            // 
+            Column2.DataPropertyName = "Description";
+            Column2.HeaderText = "Description";
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            // 
             // Column1
             // 
-            Column1.DataPropertyName = "DateTime";
+            Column1.DataPropertyName = "DateShamsi";
             Column1.FillWeight = 200F;
             Column1.HeaderText = "Date";
             Column1.Name = "Column1";
@@ -273,6 +284,7 @@
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Contact;
         private DataGridViewTextBoxColumn Amount;
+        private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column1;
     }
 }

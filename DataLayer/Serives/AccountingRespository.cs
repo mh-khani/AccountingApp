@@ -23,5 +23,9 @@ namespace DataLayer.Serives
 
             return query.ToList();
         }
+        public virtual Accounting GetByIdwihtRelations(object id)
+        {
+            return _dbSet.Include(a => a.Customer).FirstOrDefault(a => a.Id == (int)id);
+        }
     }
 }
