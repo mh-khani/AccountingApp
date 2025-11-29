@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ViewModels;
+using Utility;
 
 namespace AccountingApp
 {
@@ -22,6 +24,20 @@ namespace AccountingApp
 
         private void frmReport_Load(object sender, EventArgs e)
         {
+
+            List<CustomerViewModel> customerViewModels = new List<CustomerViewModel>();
+
+            customerViewModels.Add(new CustomerViewModel() { CustomerName = "Select", CustomerID = 0 });
+
+            using (UnitOfWork db = new UnitOfWork())
+            {
+                customerViewModels.AddRange(db.CustomerRepository.GetAllCustomerViewModel());
+            }
+
+            cmContact.DataSource = customerViewModels;
+            cmContact.DisplayMember = "CustomerName";
+            cmContact.ValueMember = "CustomerID";
+
             if (TypeId == 1)
                 this.Text = "Income Report";
             else
@@ -38,11 +54,31 @@ namespace AccountingApp
         {
             using (UnitOfWork db = new UnitOfWork())
             {
-                var res = db.AccountingRepository.GetWithRelations(a => a.TypeId == TypeId);
+                List<Accounting> res = new List<Accounting>();
+                DateTime? startDate;
+                DateTime? endDate;
 
+                if ((int)cmContact.SelectedValue == 0)
+                     res = db.AccountingRepository.GetWithRelations(a => a.TypeId == TypeId).ToList();
+                else
+                     res = db.AccountingRepository.GetWithRelations(a => a.TypeId == TypeId && 
+                     a.CustomerId == (int)cmContact.SelectedValue).ToList();
+
+                if(textFrom.Text != "    /  /")
+                {
+                    startDate = Convert.ToDateTime(textFrom.Text);
+                    startDate = DateConvertor.ToMiladi(startDate.Value);
+                    res = res.Where(a => a.DateTime >= startDate.Value).ToList();
+                }
+                if(txtTo.Text != "    /  /")
+                {
+                    endDate = Convert.ToDateTime(txtTo.Text);
+                    endDate = DateConvertor.ToMiladi(endDate.Value);
+                    res = res.Where(a => a.DateTime <= endDate.Value).ToList();
+                }
                 dataGridView1.RowHeadersVisible = false;
                 dataGridView1.AutoGenerateColumns = false;
-                dataGridView1.DataSource = res.ToList();
+                dataGridView1.DataSource = res;
             }
         }
 
@@ -87,7 +123,7 @@ namespace AccountingApp
                 NewTransaction frm = new NewTransaction();
                 frm.AccountID = id;
 
-                if(frm.ShowDialog() == DialogResult.OK)
+                if (frm.ShowDialog() == DialogResult.OK)
                 {
                     Filter();
                 }

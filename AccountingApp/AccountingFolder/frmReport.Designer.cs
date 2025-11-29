@@ -174,6 +174,7 @@
             // 
             // cmContact
             // 
+            cmContact.DropDownStyle = ComboBoxStyle.DropDownList;
             cmContact.FormattingEnabled = true;
             cmContact.Location = new Point(64, 19);
             cmContact.Margin = new Padding(3, 4, 3, 4);
