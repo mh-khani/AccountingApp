@@ -24,6 +24,8 @@ namespace AccountingApp
 
         private void frmReport_Load(object sender, EventArgs e)
         {
+       
+
 
             List<CustomerViewModel> customerViewModels = new List<CustomerViewModel>();
 
@@ -59,18 +61,18 @@ namespace AccountingApp
                 DateTime? endDate;
 
                 if ((int)cmContact.SelectedValue == 0)
-                     res = db.AccountingRepository.GetWithRelations(a => a.TypeId == TypeId).ToList();
+                    res = db.AccountingRepository.GetWithRelations(a => a.TypeId == TypeId).ToList();
                 else
-                     res = db.AccountingRepository.GetWithRelations(a => a.TypeId == TypeId && 
-                     a.CustomerId == (int)cmContact.SelectedValue).ToList();
+                    res = db.AccountingRepository.GetWithRelations(a => a.TypeId == TypeId &&
+                    a.CustomerId == (int)cmContact.SelectedValue).ToList();
 
-                if(textFrom.Text != "    /  /")
+                if (textFrom.Text != "    /  /")
                 {
                     startDate = Convert.ToDateTime(textFrom.Text);
                     startDate = DateConvertor.ToMiladi(startDate.Value);
                     res = res.Where(a => a.DateTime >= startDate.Value).ToList();
                 }
-                if(txtTo.Text != "    /  /")
+                if (txtTo.Text != "    /  /")
                 {
                     endDate = Convert.ToDateTime(txtTo.Text);
                     endDate = DateConvertor.ToMiladi(endDate.Value);
@@ -134,5 +136,7 @@ namespace AccountingApp
                 MessageBox.Show("Please select a row to delete.");
             }
         }
+
+
     }
 }

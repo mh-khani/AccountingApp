@@ -40,6 +40,19 @@ namespace DataLayer.Context
             }
         }
 
+        private GenericRepository<User> _userRepository;
+
+        public GenericRepository<User> UserRepository
+        {
+            get
+            {
+                if (_userRepository == null)
+                    _userRepository = new GenericRepository<User>(db);
+
+                return _userRepository;
+            }
+        }
+
         public void Save()
         {
             db.SaveChanges();

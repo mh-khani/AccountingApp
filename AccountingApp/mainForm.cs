@@ -1,3 +1,5 @@
+using Utility;
+
 namespace AccountingApp
 {
     public partial class mainForm : Form
@@ -29,6 +31,38 @@ namespace AccountingApp
         {
             var form = new frmReport();
             form.TypeId = 2;
+            form.ShowDialog();
+        }
+
+        private void mainForm_Load(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = DateTime.Now.ToShamsi().ToString();
+            toolStripStatusLabel2.Text = DateTime.Now.ToString("HH:mm:ss");
+
+
+            this.Hide();
+            Form form = new LoginForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+            else
+            {
+                Application.Exit();
+            }
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            toolStripStatusLabel2.Text = DateTime.Now.ToString("HH:mm:ss");
+
+        }
+
+        private void loginSettingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoginForm form = new LoginForm();
+            form.isEdit = true;
             form.ShowDialog();
         }
     }

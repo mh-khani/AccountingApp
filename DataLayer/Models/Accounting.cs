@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataLayer.Models;
 
@@ -21,10 +20,4 @@ public partial class Accounting
     public virtual Customer Customer { get; set; } = null!;
 
     public virtual AccountingType Type { get; set; } = null!;
-
-    // Not Map
-
-    [NotMapped]
-    public string FullName { get => Customer.FullName; }
-    public string DateShamsi { get => Utility.DateConvertor.ToShamsi(DateTime); }
 }
