@@ -1,3 +1,4 @@
+using Business;
 using Utility;
 
 namespace AccountingApp
@@ -39,18 +40,14 @@ namespace AccountingApp
             toolStripStatusLabel1.Text = DateTime.Now.ToShamsi().ToString();
             toolStripStatusLabel2.Text = DateTime.Now.ToString("HH:mm:ss");
 
+            LoadReportData();
 
             this.Hide();
             Form form = new LoginForm();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-
-            }
-            else
+            if (form.ShowDialog() != DialogResult.OK)
             {
                 Application.Exit();
             }
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -64,6 +61,18 @@ namespace AccountingApp
             LoginForm form = new LoginForm();
             form.isEdit = true;
             form.ShowDialog();
+        }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            LoadReportData();
+        }
+        void LoadReportData()
+        {
+            var report = MonthlyReport.report();
+            label4.Text = report.Income.ToString("N0");
+            label5.Text = report.Expense.ToString("N0");
+            label6.Text = report.Balance.ToString("N0");
         }
     }
 }

@@ -24,7 +24,7 @@ namespace AccountingApp
 
         private void frmReport_Load(object sender, EventArgs e)
         {
-       
+
 
 
             List<CustomerViewModel> customerViewModels = new List<CustomerViewModel>();
@@ -129,7 +129,6 @@ namespace AccountingApp
                 {
                     Filter();
                 }
-
             }
             else
             {
@@ -137,6 +136,19 @@ namespace AccountingApp
             }
         }
 
+        Bitmap bmp;
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Graphics graphics = this.CreateGraphics();
+            bmp = new Bitmap(this.Size.Width, this.Size.Height, graphics);
+            Graphics mg = Graphics.FromImage(bmp);
+            mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size); 
+            printPreviewDialog1.ShowDialog();
+        }
 
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(bmp, 0, 0);
+        }
     }
 }

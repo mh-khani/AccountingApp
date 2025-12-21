@@ -48,6 +48,8 @@
             Amount = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
+            printPreviewDialog1 = new PrintPreviewDialog();
+            printDocument1 = new System.Drawing.Printing.PrintDocument();
             toolStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -104,6 +106,7 @@
             btnPrint.Size = new Size(36, 51);
             btnPrint.Text = "Print";
             btnPrint.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnPrint.Click += btnPrint_Click;
             // 
             // groupBox1
             // 
@@ -242,6 +245,21 @@
             Column1.ReadOnly = true;
             Column1.Width = 200;
             // 
+            // printPreviewDialog1
+            // 
+            printPreviewDialog1.AutoScrollMargin = new Size(0, 0);
+            printPreviewDialog1.AutoScrollMinSize = new Size(0, 0);
+            printPreviewDialog1.ClientSize = new Size(400, 300);
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.Enabled = true;
+            printPreviewDialog1.Icon = (Icon)resources.GetObject("printPreviewDialog1.Icon");
+            printPreviewDialog1.Name = "printPreviewDialog1";
+            printPreviewDialog1.Visible = false;
+            // 
+            // printDocument1
+            // 
+            printDocument1.PrintPage += printDocument1_PrintPage;
+            // 
             // frmReport
             // 
             AutoScaleDimensions = new SizeF(7F, 19F);
@@ -287,5 +305,7 @@
         private DataGridViewTextBoxColumn Amount;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column1;
+        private PrintPreviewDialog printPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

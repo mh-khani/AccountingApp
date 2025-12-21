@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Utility;
 
 namespace DataLayer.Models;
 
@@ -20,4 +21,7 @@ public partial class Accounting
     public virtual Customer Customer { get; set; } = null!;
 
     public virtual AccountingType Type { get; set; } = null!;
+
+    public string FullName { get => Customer.FullName; }
+    public string DateShamsi { get => DateTime.ToShamsi(); }
 }

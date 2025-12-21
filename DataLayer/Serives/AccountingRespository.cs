@@ -19,9 +19,9 @@ namespace DataLayer.Serives
             IQueryable<Accounting> query = _dbSet;
 
             if (where != null)
-                query = query.Where(where).Include(a => a.Customer);
+                query = query.Where(where);
 
-            return query.ToList();
+            return query.Include(a => a.Customer).ToList();
         }
         public virtual Accounting GetByIdwihtRelations(object id)
         {
