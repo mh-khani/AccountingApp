@@ -42,12 +42,7 @@ namespace AccountingApp
 
             LoadReportData();
 
-            this.Hide();
-            Form form = new LoginForm();
-            if (form.ShowDialog() != DialogResult.OK)
-            {
-                Application.Exit();
-            }
+             
         }
 
         private void timer1_Tick(object sender, EventArgs e)
