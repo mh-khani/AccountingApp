@@ -35,11 +35,11 @@ A **Windows Forms** desktop application for managing customers and recording **i
 
 Some screenshots of the application UI:
 
-![Main Window](images/1.png)
-![Customers Management](images/2.png)
-![New Transaction](images/3.png)
-![Reports](images/4.png)
-![Login](images/5.png)
+![Main Window](Images/1.png)
+![Customers Management](Images/2.png)
+![New Transaction](Images/3.png)
+![Reports](Images/4.png)
+![Login](Images/5.png)
 
 ## Database
 
