@@ -31,6 +31,16 @@ A **Windows Forms** desktop application for managing customers and recording **i
 - `Utility/` : utilities (e.g., Persian date conversion)
 - `Test/` and `Test2/` : test/sample projects (currently minimal)
 
+## Screenshots
+
+Some screenshots of the application UI:
+
+![Main Window](images/1.png)
+![Customers Management](images/2.png)
+![New Transaction](images/3.png)
+![Reports](images/4.png)
+![Login](images/5.png)
+
 ## Database
 
 This project uses **SQL Server** and currently stores the connection string directly in code:
